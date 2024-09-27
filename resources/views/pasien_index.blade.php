@@ -18,6 +18,11 @@
                                     <th>NO</th>
                                     <th>No Pasien</th>
                                     <th>Nama</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Usia</th>
+                                    <th>Foto</th>
+                                    <th>Alamat</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -25,9 +30,13 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->no_pasien }}</td>
-                                        <td>
-                                            {{ $item->nama }}
-                                        </td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->jenis_kelamin }}</td>
+                                        <td>{{ $item->umur }}</td>
+                                        <td>{{ $item->foto }}</td>
+                                        <td>{{ $item->alamat }}</td>
+                                        <td><a href="/pasien/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a></td>
+                                        <td><a href="/pasien/{{ $item->id }}/delete" class="btn btn-danger btn-sm">Delete</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
