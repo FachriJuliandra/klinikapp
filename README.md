@@ -1,4 +1,5 @@
 Mengerjakan Laravel Klinikapp
+pertemuan psts
 yang berisi
 
 -Tampilan depan(welcome)
@@ -7,6 +8,6 @@ yang berisi
 
 -Tabel Data Pasien
 
--tambah data dengan foto
+-edit data
 
--tanbah data tanpa foto
+-hapus data
