@@ -33,7 +33,7 @@
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->jenis_kelamin }}</td>
                                         <td>{{ $item->umur }}</td>
-                                        <td><img src="{{ $item->foto ? asset('storage/images/' . $item->foto) : asset('images/default.jpeg') }}" alt="Foto Pasien" width="50px"></td>
+                                        <td><img src="{{ $item->foto ? asset('storage/images/' . $item->foto) : asset('storage/images/default.jpg') }}" alt="Foto Pasien" width="50px"></td>
                                         <td>{{ $item->alamat }}</td>
                                         <td><a href="/pasien/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a></td>
                                         <td><a href="/pasien/{{ $item->id }}/delete" class="btn btn-danger btn-sm">Delete</a></td>
