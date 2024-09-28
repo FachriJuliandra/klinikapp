@@ -35,8 +35,19 @@
                                         <td>{{ $item->umur }}</td>
                                         <td><img src="{{ $item->foto ? asset('storage/images/' . $item->foto) : asset('storage/images/default.jpg') }}" alt="Foto Pasien" width="50px"></td>
                                         <td>{{ $item->alamat }}</td>
-                                        <td><a href="/pasien/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a></td>
-                                        <td><a href="/pasien/{{ $item->id }}/delete" class="btn btn-danger btn-sm">Delete</a></td>
+                                        <td>
+                                            <a href="/pasien/{{ $item->id }}/edit" class="btn btn-warning btn-sm ml-2">
+                                                Edit
+                                            </a>
+                                            <form action="/pasien/{{ $item->id }}" method="post" class="d-inline">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger btn-sm ml-2"
+                                                    onclick="return confirm('Yakin ingin menghapus data?')">
+                                                    Hapus
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -47,4 +58,4 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection<
