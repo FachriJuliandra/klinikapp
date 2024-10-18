@@ -6,6 +6,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::resource('pasien', App\Http\Controllers\PasienController::class);
+});
 
 Route::resource('pasien', App\Http\Controllers\PasienController::class);
 
