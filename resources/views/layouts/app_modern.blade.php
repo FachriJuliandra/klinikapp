@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> {{ $title ?? '' }} :: {{ env('APP_NAME') }}</title>
+    <title>{{ $title ?? '' }}</title>
     <link rel="shortcut icon" type="image/png" href="/modern/src/assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="/modern/src/assets/css/styles.min.css" />
 </head>
@@ -18,8 +18,8 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="./index.html" class="text-nowrap logo-img">
-                        <img src="/modern/src/assets/images/logos/dark-logo.svg" width="180" alt="" />
+                    <a href="." class="text-nowrap logo-img">
+                        <img src="/modern/src/assets/images/logos/webpro.png" width="180" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -30,51 +30,46 @@
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Menu Utama</span>
+                            <span class="hide-menu">Menu</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ request()->is('home') ? 'active' : '' }} " href="/home"
-                                aria-expanded="false">
+                            <a class="sidebar-link" href="/home" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
-                                <span class="hide-menu">Beranda</span>
+                                <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ request()->is('pasien*') ? 'active' : '' }}" href="/pasien"
-                                aria-expanded="false">
+                            <a class="sidebar-link" href="/daftar" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-clipboard"></i>
                                 </span>
-                                <span class="hide-menu">Data Pasien</span>
+                                <span class="hide-menu">Pendaftaran</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ request()->is('daftar*') ? 'active' : '' }}" href="/daftar"
-                                aria-expanded="false">
+                            <a class="sidebar-link" href="/pasien" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-user-exclamation"></i>
                                 </span>
-                                <span class="hide-menu">Data Pendaftaran</span>
+                                <span class="hide-menu">Pasien</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ request()->is('laporan-pasien') ? 'active' : '' }}"
-                                href="/laporan-pasien/create" aria-expanded="false">
+                            <a class="sidebar-link" href="/poli" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-building"></i>
                                 </span>
-                                <span class="hide-menu">Laporan Data Pasien</span>
+                                <span class="hide-menu">Poli</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ request()->is('laporan-daftar') ? 'active' : '' }}"
-                                href="/laporan-daftar/create" aria-expanded="false">
+                            <a class="sidebar-link" href="/users" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user"></i>
                                 </span>
-                                <span class="hide-menu">Laporan Data Pendaftaran</span>
+                                <span class="hide-menu">Pengguna</span>
                             </a>
                         </li>
                     </ul>
@@ -117,16 +112,26 @@
                                         <a href="javascript:void(0)"
                                             class="d-flex align-items-center gap-2 dropdown-item">
                                             <i class="ti ti-user fs-6"></i>
-                                            <p class="mb-0 fs-3">{{ auth()->user()->name }}</p>
+                                            <p class="mb-0 fs-3">My Profile</p>
                                         </a>
-                                        <a href="#"
-                                            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"
-                                            class="btn btn-outline-primary mx-3 mt-2 d-block">Logout
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-mail fs-6"></i>
+                                            <p class="mb-0 fs-3">My Account</p>
+                                        </a>
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-list-check fs-6"></i>
+                                            <p class="mb-0 fs-3">My Task</p>
+                                        </a>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="if(confirm('Anda yakin keluar?')) { event.preventDefault(); document.getElementById('logout-form').submit(); } else { return false; }"
+                                            class="btn btn-outline-primary mx-3 mt-2 d-block">
+                                            <i class="ti ti-logout me-2"></i>Logout
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
+                                            style="display: none;">
+                                            {{ csrf_field() }}
                                         </form>
                                     </div>
                                 </div>
@@ -146,6 +151,7 @@
             </div>
         </div>
     </div>
+
     <script src="/modern/src/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="/modern/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/modern/src/assets/js/sidebarmenu.js"></script>
@@ -154,5 +160,3 @@
 </body>
 
 </html>
-app_modern.blade.txt
-Displaying app_modern.blade.txt.

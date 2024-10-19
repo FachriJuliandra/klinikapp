@@ -49,6 +49,14 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/daftar">Pendaftaran Pasien</a>
                             </li>
+                            <ul class="navbar-nav">
+                                <!-- Link lainnya -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('polis.index') }}">
+                                        <i class="fas fa-hospital"></i> Poli
+                                    </a>
+                                </li>
+                            </ul>
                         @endauth
                         </ul>
                     </ul>

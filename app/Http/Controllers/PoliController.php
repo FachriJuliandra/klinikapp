@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\poli;
+use App\Models\Poli;
 use Illuminate\Http\Request;
 
 class PoliController extends Controller
@@ -12,7 +12,9 @@ class PoliController extends Controller
      */
     public function index()
     {
-        //
+        $poli = \App\Models\Poli::latest()->paginate(10);
+        $data['poli'] = $poli;
+        return view('poli_index', $data);
     }
 
     /**
@@ -20,7 +22,7 @@ class PoliController extends Controller
      */
     public function create()
     {
-        //
+        return view('poli_create');
     }
 
     /**
@@ -28,13 +30,22 @@ class PoliController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $requestData = $request->validate([
+            'nama'        => 'required',
+            'biaya'       => 'required|numeric',  
+        ]);
+        $poli = new \App\Models\Poli();
+        $poli->nama = $requestData['nama'];
+        $poli->biaya = $requestData['biaya'];
+        $poli->save();
+        return redirect('/poli')->with('pesan', 'Data sudah disimpan');
     }
+    
 
     /**
      * Display the specified resource.
      */
-    public function show(poli $poli)
+    public function show(Poli $poli)
     {
         //
     }
@@ -42,24 +53,34 @@ class PoliController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(poli $poli)
+    public function edit(Poli $poli)
     {
-        //
+        $data['poli'] = $poli;
+        return view('poli_edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, poli $poli)
+    public function update(Request $request, Poli $poli)
     {
-        //
+        $requestData = $request->validate([
+            'nama'        => 'required',
+            'biaya'       => 'required|numeric',  
+        ]);
+        $poli->nama = $requestData['nama'];
+        $poli->biaya = $requestData['biaya'];
+        $poli->save();
+        return redirect('/poli')->with('pesan', 'Data sudah diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(poli $poli)
+    public function destroy(Poli $poli)
     {
-        //
+        $poli = \App\Models\Poli::findOrFail($poli->id);
+        $poli->delete();
+        return back()->with('pesan', 'Data sudah dihapus');
     }
 }

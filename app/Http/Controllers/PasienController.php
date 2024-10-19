@@ -92,7 +92,7 @@ class PasienController extends Controller
             $request->file('foto')->storeAs('public/images', $fotoName);
             $Image = str_replace('/storage', '', $pasien->foto);
             if(Storage::exists('public/storage/' . $Image)){
-                Storage::delete('/public/storage/' . $Image);
+                Storage::delete('public/storage/' . $Image);
             }
             $pasien->foto = $fotoName;
         }
