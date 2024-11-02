@@ -111,4 +111,3 @@ class PasienController extends Controller
     }
 }
 
-//Thoriq
