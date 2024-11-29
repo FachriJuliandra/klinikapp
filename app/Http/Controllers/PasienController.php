@@ -110,5 +110,3 @@ class PasienController extends Controller
         return back()->with('pesan', 'Data sudah dihapus');
     }
 }
-
-//Thoriq
