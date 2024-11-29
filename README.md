@@ -10,3 +10,5 @@ yang berisi
 -tambah data dengan foto
 
 -tanbah data tanpa foto
+
+

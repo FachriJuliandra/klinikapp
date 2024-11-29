@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class poli extends Model
 {
     use HasFactory;
+
+    
 }

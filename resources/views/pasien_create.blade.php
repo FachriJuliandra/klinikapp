@@ -1,4 +1,4 @@
-@extends('layouts.app_modern', ['title' => 'Data Pasien'])
+@extends('layouts.app_modern', ['title' => 'Tambah Data Pasien'])
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -59,7 +59,7 @@
                                     id="alamat" name="alamat" value="{{ old('alamat') }}">
                                 <span class="text-danger">{{ $errors->first('alamat') }}</span>
                             </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary">SIMPAN</button>
                         </form>
                     </div>
                 </div>
